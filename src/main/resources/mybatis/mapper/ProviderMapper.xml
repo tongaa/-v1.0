@@ -2,8 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mengxuegu.bill.mapper.ProviderMapper">
-<select id="getAllProvider" resultType="com.mengxuegu.bill.entities.Provider" >
+<mapper namespace="com.mengxugu2.demo.mapper.ProviderMapper">
+<select id="getProviders" resultType="com.mengxugu2.demo.entities.Provider" >
+-- where 1=1可以保证不论参数有无 都会查询
 select * from provider where 1=1
     <if test="providerName != null and providerName != ''">
 --  第一个providerName 是mysql数据表中的字段名字
@@ -25,7 +26,7 @@ select * from provider where 1=1
         delete from provider where pid = #{pid}
     </delete>
 
-    <select id="getProviderByPid" resultType="com.mengxuegu.bill.entities.Provider" >
+    <select id="getProviderByPid" resultType="com.mengxugu2.demo.entities.Provider" >
         select * from provider where  pid= #{pid};
     </select>
 
