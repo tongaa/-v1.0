@@ -25,7 +25,7 @@ public class ProviderController {
     public String list(Map<String,Object> map,Provider provider){
         List<Provider> providers = providerMapper.getProviders(provider);
         map.put("providers",providers);
-        //?
+        //回显搜索框内输入的数据
         map.put("providerName",provider.getProviderName());
 
         return "provider/list";

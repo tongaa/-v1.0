@@ -26,6 +26,7 @@
             <div class="search">
                 <span>供应商名称：</span>
                 <!--th:value="${providerName}" providerName这个是实体中的属性名，标签有值就赋值给她-->
+                <!--这里${providerName}是获得成员变量以便赋值，当input框输入后就给providerName变量赋值了，仅仅给他一个赋值，别的都是null-->
                 <input type="text" th:value="${providerName}" name="providerName" placeholder="请输入供应商的名称"/>
                 <input type="button" onclick="$('#searchForm').submit()" value="查询"/>
                 <a th:href="@{/provider}" href="add.html">添加供应商</a>
