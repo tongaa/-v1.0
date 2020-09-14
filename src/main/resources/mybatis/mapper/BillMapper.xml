@@ -35,7 +35,7 @@
         WHERE `bid`=#{bid}
     </update>
 
-    <delete id="deleteBillByBid">
+    <delete id="deteleBillByBid">
         delete from bill where bid=#{bid}
     </delete>
 

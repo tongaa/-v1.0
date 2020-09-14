@@ -4,7 +4,7 @@
 
 </head>
 <body>
-<!--头部 tgw 引入公共片段-->
+<!--头部-->
 <header class="publicHeader" th:replace="main/public :: #public_header">
 
 </header>
@@ -22,7 +22,7 @@
             <span>账单管理页面 >> 账单添加页面</span>
         </div>
         <div class="providerAdd">
-            <form action="#">
+            <form id="addForm" th:action="@{/bill}" th:method="post" action="#">
                 <!--div的class 为error是验证错误，ok是验证成功-->
                 <div class="">
                     <label for="billCode">账单编码：</label>
@@ -54,9 +54,7 @@
                     <label >供应商：</label>
                     <select name="pid" >
                         <option value="">--请选择相应的提供商--</option>
-                        <option value="">北京市粮油总公司</option>
-                        <option value="">邯郸市五得利面粉厂</option>
-
+                        <option value="" th:each="p : ${providers}" th:value="${p.pid}" th:text="${p.providerName}">北京市粮油总公司</option>
                     </select>
                     <span>*请选择供应商</span>
                 </div>
@@ -68,7 +66,7 @@
                 <div class="providerAddBtn">
                     <!--<a href="#">保存</a>-->
                     <!--<a href="billList.html">返回</a>-->
-                    <input type="button" value="保存" onclick="history.back(-1)"/>
+                    <input type="button" onclick="$('#addForm').submit();" value="保存" />
                     <input type="button" value="返回" onclick="history.back(-1)"/>
                 </div>
             </form>
@@ -78,7 +76,7 @@
 </section>
 <footer class="footer" th:replace="main/public :: #public_footer">
 </footer>
-<script src="../js/jquery.js"></script>
+<script th:src="@{/webjars/jquery/3.3.1/jquery.js}" src="../js/jquery.js"></script>
 <!--
 	<script src="js/time.js"></script>
 	-->

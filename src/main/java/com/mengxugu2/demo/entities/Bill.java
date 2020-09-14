@@ -22,8 +22,8 @@ public class Bill {
     private Integer billNum;
     // 总金额
     private Double money;
-    // 供应商
-    private Provider provider;
+    // 供应商 实体  没用了
+    //private Provider provider;
 
     //供应商id
     private Integer pid;
@@ -49,7 +49,6 @@ public class Bill {
         this.billCom = billCom;
         this.billNum = billNum;
         this.money = money;
-        this.provider = provider;
         this.pay = pay;
         this.createDate = new Date();
     }
@@ -64,7 +63,6 @@ public class Bill {
                 ", billCom='" + billCom + '\'' +
                 ", billNum=" + billNum +
                 ", money=" + money +
-                ", provider=" + provider +
                 ", pay=" + pay +
                 ", createDate=" + createDate +
                 '}';
@@ -116,14 +114,6 @@ public class Bill {
 
     public void setMoney(Double money) {
         this.money = money;
-    }
-
-    public Provider getProvider() {
-        return provider;
-    }
-
-    public void setProvider(Provider provider) {
-        this.provider = provider;
     }
 
     public Integer getPay() {
