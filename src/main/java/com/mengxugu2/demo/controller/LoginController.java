@@ -31,7 +31,7 @@ public class LoginController {
             User user = userMapper.getUserByUsername(username);
             if(user != null && user.getPassword().equals(password)) {
                 //登录成功
-                session.setAttribute("loginUser", username);
+                session.setAttribute("loginUser", user);
                 //重定向 redirect：可以重定向到任意一个请求中（包括其他项目），地址栏改变
                 return "redirect:/main.html";
             }

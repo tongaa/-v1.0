@@ -12,7 +12,7 @@
     <h1>梦学谷账单管理系统</h1>
 
     <div class="publicHeaderR">
-        <p><span>下午好！</span><span style="color: #fff21b"> [[${session.loginUser}]]</span> , 欢迎你！</p>
+        <p><span>下午好！</span><span style="color: #fff21b"> [[${session.loginUser.username}]]</span> , 欢迎你！</p>
         <a th:href="@{/logout}" href="../main/login.html">退出</a>
     </div>
 </header>
@@ -31,8 +31,8 @@
                 <!--Thymeleaf引入片段时传入参数  activeUri：当引入此公共片段时activeUri作为参数传进来-->
                 <li th:id="${activeUri == 'bill' ? 'active': ''}" id="active"><a th:href="@{/bills}" href="../bill/list.html">账单管理</a></li>
                 <li th:id="${activeUri == 'provider' ? 'active': ''}" ><a th:href="@{/providers}" href="../provider/list.html">供应商管理</a></li>
-                <li th:id="${activeUri == 'user' ? 'active': ''}"><a href="../user/list.html">用户管理</a></li>
-                <li th:id="${activeUri == 'pwd' ? 'active': ''}" ><a href="../main/password.html">密码修改</a></li>
+                <li th:id="${activeUri == 'user' ? 'active': ''}"><a th:href="@{/users}" href="../user/list.html">用户管理</a></li>
+                <li th:id="${activeUri == 'pwd' ? 'active': ''}" ><a th:href="@{/user/pwd}" href="../main/password.html">密码修改</a></li>
                 <!--th:href="@{/logout}   th:href标注请求路径-->
                 <li ><a th:href="@{/logout}" href="../main/login.html">退出系统</a></li>
             </ul>
