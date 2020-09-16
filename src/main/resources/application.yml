@@ -36,4 +36,4 @@ mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
 logging:
   level:
-    com.mengxuegu.springboot.mapper: debug
+    com.mengxugu2.demo.mapper: debug
