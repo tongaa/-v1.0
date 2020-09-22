@@ -18,6 +18,9 @@ public class User {
     private String realName;
     //用户密码
     private String password;
+
+    //新增盐值字段
+    private String salt;
     //性别：1 女  2 男
     private Integer gender;
     //生日
@@ -37,14 +40,23 @@ public class User {
         return id;
     }
 
-    public User(Integer id, String username, String realName, String password, Integer gender, Integer userType) {
+    public User(Integer id, String username, String realName, String password, String salt, Integer gender, Date birthday, Integer userType) {
         this.id = id;
         this.username = username;
         this.realName = realName;
         this.password = password;
+        this.salt = salt;
         this.gender = gender;
-        this.birthday = new Date();
+        this.birthday = birthday;
         this.userType = userType;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 
     public void setId(Integer id) {
@@ -106,6 +118,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", realName='" + realName + '\'' +
                 ", password='" + password + '\'' +
+                ", salt='" + salt + '\'' +
                 ", gender=" + gender +
                 ", birthday=" + birthday +
                 ", userType=" + userType +

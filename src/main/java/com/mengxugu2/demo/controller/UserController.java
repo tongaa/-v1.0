@@ -3,6 +3,8 @@ package com.mengxugu2.demo.controller;
 
 import com.mengxugu2.demo.entities.User;
 import com.mengxugu2.demo.mapper.UserMapper;
+import com.mengxugu2.demo.utils.SaltUtils;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -90,7 +92,7 @@ public class UserController {
     public  Boolean checkPwd(HttpSession session,@PathVariable("oldPwd") String oldPwd){
 //1. 从Session中获取当前登录用户的User对 象
     User user = (User)session.getAttribute("loginUser");
-    if (user.getPassword().equals(oldPwd)){
+    if (user.getPassword().equals(new Md5Hash(oldPwd,user.getSalt(),1024).toHex())){
         return  true ;  //旧密码输入正确
        }
         return  false;
@@ -102,8 +104,11 @@ public class UserController {
 
 //1.从Session中获取当前登录用户信息
         User user = (User)session.getAttribute("loginUser");
-//2. 更新密码
-        user.setPassword(password);
+//2. 更新密码,把盐值散列加密后的新密码存储到数据库中
+        String salt = SaltUtils.getSalt(8);
+        Md5Hash md5Hash = new Md5Hash(password,salt,1024);
+        user.setSalt(salt);
+        user.setPassword(md5Hash.toHex());
 //3.提交到数据库
         userMapper.updateUser(user);
 //4.注销重新登录

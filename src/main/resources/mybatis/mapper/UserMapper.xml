@@ -29,7 +29,7 @@
         UPDATE `user`
         SET `username`=#{username}, `real_name`=#{realName},
         `password`=#{password}, `gender`=#{gender}, `birthday`=#{birthday},
-        `user_type`=#{userType}
+        `user_type`=#{userType},`salt`=#{salt}
         WHERE `id`=#{id}
     </update>
 
