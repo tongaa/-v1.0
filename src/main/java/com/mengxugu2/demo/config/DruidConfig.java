@@ -48,6 +48,7 @@ public class DruidConfig {
         initParam.put(StatViewServlet.PARAM_NAME_PASSWORD, "123");
         //如果不写，则默认所有ip都可以访问
         initParam.put(StatViewServlet.PARAM_NAME_ALLOW, "");
+        //设置那一个ip不可以访问
         initParam.put(StatViewServlet.PARAM_NAME_DENY, "192.168.10.1");
 
         bean.setInitParameters(initParam);
